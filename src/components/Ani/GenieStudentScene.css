@@ -1,0 +1,163 @@
+/* Full-screen container for the scenes */
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap');
+
+.scene-container {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Prevent content from going outside the container */
+}
+
+/* Container for the genie and student */
+.character-container {
+  display: flex;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+/* Animation for sliding in and out */
+.slide-in .genie, .slide-in .student {
+  animation: slideIn 0.5s forwards;
+}
+
+.slide-out .genie, .slide-out .student {
+  animation: slideOut 0.5s forwards;
+}
+
+/* Genie sliding in from the left */
+.genie {
+  max-width: 500px;
+  height: auto;
+  position: relative;
+  left: 50px; /* Adjusted starting position */
+}
+
+/* Student sliding in from the right */
+.student {
+  max-width: 200px;
+  height: auto;
+  position: absolute;
+  right: 100px; /* Adjusted starting position */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-150px); /* Adjust this value based on how far you want the genie to start */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-150px); /* Matching with the slide-out distance */
+    opacity: 0;
+  }
+}
+
+/* Container for dialogue text */
+/* .dialogue-container {
+  width: 60%;
+  color: red;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 60px;
+} */
+
+/* Buttons for navigation */
+.button-container {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for better visibility */
+  color: white;
+  border: 1px solid white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dialogue-container {
+  width: 80%;
+  color: #00ff00; /* Dialogue text color */
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 40px;
+  position: absolute;
+  bottom: 1px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0); /* Background for better readability */
+  border-radius: 10px;
+  cursor: pointer; /* Change cursor to pointer for clickability */
+}
+
+.dialogue {
+  white-space: pre-line; /* To preserve new lines */
+  font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
+}
+
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+ 
+  gap: 40px;
+  z-index: 999;
+}
+
+.game-link {
+  background-color: #1e90ff; /* Cool blue color */
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive; /* Example gaming font */
+  text-decoration: none; /* Remove underline */
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.game-link:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  background-color: #ff6347; /* Change color on hover */
+}
+
