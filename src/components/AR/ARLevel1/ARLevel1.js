@@ -9,7 +9,7 @@ function Chair({ position, id, onSeatGuest }) {
   return (
     <mesh position={position} onClick={() => onSeatGuest(id)}>
       <boxGeometry args={[1, 1, 1]} /> {/* Box geometry for the chair */}
-      <meshStandardMaterial color="#8B4513" /> {/* Brown color for the chair */}
+      <meshStandardMaterial color="#FF5841" /> {/* Brown color for the chair */}
     </mesh>
   );
 }
@@ -29,7 +29,7 @@ function Guest({ name, position, onDragStart, onDrop, isSelected }) {
     >
       <sphereGeometry args={[0.5, 32, 32]} /> {/* Guest represented as a sphere */}
       <meshStandardMaterial 
-        color={isSelected ? '#FFD700' : '#FF6347'} // Gold for selected guest, tomato for others
+        color={isSelected ? '#FFD700' : '#4A8BDF'} // Gold for selected guest, tomato for others
         emissive={isSelected ? '#FFD700' : '#000000'} // Glow effect when selected
       />
       <Html>{name}</Html> {/* Displays guest's name above the sphere */}
@@ -41,7 +41,7 @@ function Guest({ name, position, onDragStart, onDrop, isSelected }) {
 const clues = [
   "Person A must sit next to Person B.",
   "Person C cannot sit next to Person D.",
-  "The treasure is hidden under Person B's seat.",
+  "The treasure is hidden ",
 ];
 
 // SeatingPuzzle component manages seating arrangement and guest interactions
@@ -127,7 +127,7 @@ function SeatingPuzzle({ onToggleClues, onReset, showClues, treasureFound, onLev
 
       {/* Ground Plane */}
       <Plane args={[20, 20]} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
-        <meshStandardMaterial color="#8BDFD8" /> {/* Ground color */}
+        <meshStandardMaterial color="#E9F1FA" /> {/* Ground color */}
       </Plane>
 
       {/* Render chairs */}
@@ -155,7 +155,7 @@ function SeatingPuzzle({ onToggleClues, onReset, showClues, treasureFound, onLev
 
 // Main GameLevel component manages the game state and user interface
 export default function GameLevel() {
-  const [showClues, setShowClues] = useState(false); // Toggle clues visibility
+  const [showClues, setShowClues] = useState(true); // Toggle clues visibility
   const [treasureFound, setTreasureFound] = useState(false); // Tracks if treasure is found
   const [levelCompleted, setLevelCompleted] = useState(false); // Tracks level completion
 
@@ -205,7 +205,7 @@ export default function GameLevel() {
             animation: 'fade-in 1s ease-in-out',
           }}
         >
-          <p>You've found the treasure under B's seat!</p>
+          <p>You've found the treasure </p>
           <button
             style={{
               marginTop: '10px',
@@ -216,6 +216,7 @@ export default function GameLevel() {
               border: 'none',
               cursor: 'pointer',
               borderRadius: '5px',
+              zIndex:999
             }}
             onClick={nextLevel} // Triggers next level
           >
@@ -277,7 +278,7 @@ export default function GameLevel() {
             zIndex: 1,
           }}
         >
-          <h3>Puzzle Clues:</h3>
+          <h3>Question : </h3>
           <ul>
             {clues.map((clue, index) => (
               <li key={index}>{clue}</li> // List each clue
