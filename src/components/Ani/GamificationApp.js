@@ -163,7 +163,7 @@ const GenieStudentScene = () => {
           <a href="/game/AR/level1" className="game-link button-49">
             Aptitude & Reasoning
           </a>
-          <a href="/java" className="game-link button-49">
+          <a href="/J/level1" className="game-link button-49">
             Java
           </a>
           <a href="/dbms-sql" className="game-link button-49">

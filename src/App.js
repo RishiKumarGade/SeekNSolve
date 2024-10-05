@@ -4,6 +4,8 @@
 import React, { Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ARLevel1 from './components/AR/ARLevel1/ARLevel1';
+import JLevel1 from './components/Java/JLevel1';
+
 import Test from './components/Test';
 import GamificationApp from './components/Ani/GamificationApp';
 
@@ -16,6 +18,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/game/AR/level1" element={<ARLevel1 />}/>
+        <Route path="/game/J/level1" element={<JLevel1 />}/>
         <Route path="/test" element={<Test />}/>
       </Routes>
     </BrowserRouter>
